@@ -11,28 +11,34 @@
     <div class="container-scroller">
         @include("admin.navbar")
 
-    <div style="position: relative; top:60px; right:-150px ">
-    <table bgcolor="grey" border="3px">
-    <tr>
-        <th style="padding: 30px">Name</th>
-        <th style="padding: 30px">Email</th>
-        <th style="padding: 30px">Action</th>
-    </tr>
-    @foreach($data as $data)
-    <tr align="center">
-        <td>{{$data->name}}</td>
-        <td>{{$data->email}}</td>
+        <div>
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                @foreach($data as $data)
+                <tbody>
+                    <tr>
+                        <td scope="row">{{$data->id}}</td>
+                        <td>{{$data->name}}</td>
+                        <td>{{$data->email}}</td>
 
-        @if($data->usertype=="0")
-            <td><a href="{{url('/deleteuser',$data->id)}}">Delete</a></td>
-        @else
-        <td>Not Allow</a></td>
-        @endif
-        
-    </tr>
-    @endforeach
-    </table>
-</div>
+                        @if($data->usertype=="0")
+                        <td><a href="{{url('/deleteuser',$data->id)}}"><button class="btn btn-danger">Delete</button></a></td>
+                        @else
+                        <td class="bg-light">Not Allow</a></td>
+                        @endif
+
+                    </tr>
+                </tbody>
+                @endforeach
+            </table>
+        </div>
     </div>
     @include("admin.script")
 
