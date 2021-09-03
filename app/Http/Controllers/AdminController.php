@@ -10,6 +10,7 @@ use App\Models\Order;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 
+
 class AdminController extends Controller
 {
 
@@ -18,6 +19,7 @@ class AdminController extends Controller
     {
         $data = user::all();
         return view("admin.users", compact("data"));
+       
     }
     public function deleteuser($id)
     {
@@ -112,8 +114,14 @@ class AdminController extends Controller
 
     public function viewreservation()
     {
+        if(Auth::id()){
         $data = reservation::all();
         return view("admin.reservation", compact("data"));
+        }
+        else
+        {
+            return redirect('login');
+        }
     }
 
 
@@ -121,8 +129,14 @@ class AdminController extends Controller
 
     public function viewchefs()
     {
+         if(Auth::id()){
         $data = chefs::all();
         return view("admin.chefs", compact("data"));
+    }
+    else
+    {
+        return redirect('login');
+    }
     }
 
     public function chefinfoupload(Request $request)

@@ -53,6 +53,10 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Logo Start ***** -->
                         <a href="index.html" class="logo">
                             <img src="#" align="">
+
+                            <a class="menu-trigger">
+                                <span>Menu</span>
+                            </a>
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -63,7 +67,7 @@ https://templatemo.com/tm-558-klassy-cafe
 
                             <li class="scroll-to-section"><a href="#menu">Menu</a></li>
                             <li class="scroll-to-section"><a href="#chefs">Chefs</a></li>
-                            <!-- <li class="submenu">
+                            <li class="submenu">
                                 <a href="javascript:;">Features</a>
                                 <ul>
                                     <li><a href="#">Features Page 1</a></li>
@@ -71,7 +75,7 @@ https://templatemo.com/tm-558-klassy-cafe
                                     <li><a href="#">Features Page 3</a></li>
                                     <li><a href="#">Features Page 4</a></li>
                                 </ul>
-                            </li> -->
+                            </li>
 
                             <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li>
 
@@ -79,12 +83,13 @@ https://templatemo.com/tm-558-klassy-cafe
                             <li class="scroll-to-section">
                                 @auth
                                 <a href="{{url('/showcart',Auth::user()->id)}}">
-                                Cart[{{$count}}]
+                                    Cart[{{$count}}]
                                 </a>
                                 @endauth
                                 @guest
                                 Cart[0]
-                                @endguest</li>
+                                @endguest
+                            </li>
 
                             <li>
                                 @if (Route::has('login'))
@@ -99,7 +104,7 @@ https://templatemo.com/tm-558-klassy-cafe
                             @if (Route::has('register'))
                             <li> <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a></li>
                             @endif
-                            
+
                             @endauth
                 </div>
                 @endif
