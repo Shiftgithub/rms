@@ -29,7 +29,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Choose new Image if you want</label>
-                    <input type="file" name="image" class="form-control" id="" placeholder="Image">
+                    <input type="file" name="image" class="form-control" id="">
                 </div>
                 <div class="form-group">
                     <label for="">Description</label>

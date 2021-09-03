@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Image</label>
-                    <input type="file" name="image" class="form-control" id="" placeholder="image" required>
+                    <input type="file" name="image" class="form-control" id="" required>
                 </div>
                 <div class="form-group">
                     <label for="">Description</label>

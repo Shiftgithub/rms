@@ -14,23 +14,51 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get("/",[HomeController::class,"index"] );
-Route::get("/users",[AdminController::class,"user"] );
-Route::get("/deleteuser/{id}",[AdminController::class,"deleteuser"] );
+// index 
+Route::get("/",[HomeController::class,"index"]);
 
-Route::get("/editmenu/{id}",[AdminController::class,"editmenu"] );
-Route::get("/deletemenu/{id}",[AdminController::class,"deletemenu"] );
+// user part
+Route::get("/users",[AdminController::class,"user"]);
+Route::get("/deleteuser/{id}",[AdminController::class,"deleteuser"]);
 
-Route::get("/foodmenu",[AdminController::class,"foodmenu"] );
+//food menu part
+Route::get("/foodmenu",[AdminController::class,"foodmenu"]);
+Route::get("/editmenu/{id}",[AdminController::class,"editfoodmenu"]);
+Route::get("/deletemenu/{id}",[AdminController::class,"deletemenu"]);
+Route::post("/uploadfood",[AdminController::class,"uploadfoodmenu"]);
+Route::post("/update/{id}",[AdminController::class,"update"]);
 
-Route::post("/uploadfood",[AdminController::class,"upload"] );
+//reservation part 
+Route::post("/reservation",[AdminController::class,"reservation"]);
+Route::get("/viewreservation",[AdminController::class,"viewreservation"]);
 
-Route::post("/update/{id}",[AdminController::class,"update"] );
+//chef part
+Route::post("/chefinfoupload",[AdminController::class,"chefinfoupload"]);
+Route::post("/editchefinfo/{id}",[AdminController::class,"editchefinfo"]);
+Route::get("/viewchefs",[AdminController::class,"viewchefs"]);
+Route::get("/updatechefinfo/{id}",[AdminController::class,"updatechefinfo"]);
+Route::get("/deletchefinfo/{id}",[AdminController::class,"deletchefinfo"]);
 
+//add cart
+
+Route::post("/addcart/{id}",[HomeController::class,"addcart"]);
+Route::get("/showcart/{id}",[HomeController::class,"showcart"]);
+Route::get("/cartremove/{id}",[HomeController::class,"cartremove"]);
+
+//order food
+
+Route::post("/orderconfirm",[HomeController::class,"orderconfirm"]);
+Route::get("/orders",[AdminController::class,"orders"]);
+
+// redirect
 
 Route::get("redirects",[HomeController::class,"redirects"] );
 
+//search 
 
+Route::get("/search",[AdminController::class,"search"]);
+
+//
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
