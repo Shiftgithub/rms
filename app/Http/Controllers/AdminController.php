@@ -97,6 +97,12 @@ class AdminController extends Controller
 
     public function reservation(Request $request)
     {
+        $usertype = Auth::user()->usertype;
+
+        if ($usertype == '1') {
+
+            return view('admin.adminhome');
+        } else {
         $data = new Reservation;
 
         $data->name = $request->name;
@@ -110,6 +116,7 @@ class AdminController extends Controller
         $data->save();
 
         return redirect()->back();
+        }
     }
 
     public function viewreservation()
