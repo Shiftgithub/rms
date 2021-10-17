@@ -23,24 +23,26 @@ class HomeController extends Controller
         if (Auth::id()) {
 
             return redirect('redirects');
-        } else
+        }
 
-            $data = foods::all();
-            $data2 = Chefs::all();
+        $data = foods::all();
+        $data2 = Chefs::all();
 
         return view("home", compact("data", "data2"));
     }
+
     public function redirects()
     {
         $data = foods::all();
         $data2 = chefs::all();
 
         $usertype = Auth::user()->usertype;
-
         if ($usertype == '1') {
 
             return view('admin.adminhome');
         } else {
+            // dd(Auth::user());
+
             $user_id = Auth::id();
 
             $count = cart::where('user_id', $user_id)->count();
@@ -76,17 +78,14 @@ class HomeController extends Controller
     {
         $count = cart::where('user_id', $id)->count();
 
-        if(Auth::id()==$id)
-        {
+        if (Auth::id() == $id) {
 
-        $data2 = Cart::select('*')->where('user_id', '=', $id)->get();
+            $data2 = Cart::select('*')->where('user_id', '=', $id)->get();
 
-        $data = cart::where('user_id', $id)->join('foods', 'carts.food_id', '=', 'foods.id')->get();
+            $data = cart::where('user_id', $id)->join('foods', 'carts.food_id', '=', 'foods.id')->get();
 
-        return view('showcart', compact('count', 'data', 'data2'));
-        }
-        else
-        {
+            return view('showcart', compact('count', 'data', 'data2'));
+        } else {
             return redirect()->back();
         }
     }
